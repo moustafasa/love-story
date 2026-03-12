@@ -1,7 +1,11 @@
-import Image from "next/image";
+import LandingPage from "@/components/basics/LandingPage";
+import TimeLineSection from "@/components/basics/TimeLineSection";
 
-export default function Home() {
+export default function SurprisePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black"></div>
+    <div className="min-h-screen relative overflow-x-hidden ">
+      <LandingPage />
+      <TimeLineSection />
+    </div>
   );
 }
