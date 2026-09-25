@@ -1,7 +1,9 @@
+import { getMemories } from "@/lib/addImages/MemoriesController";
 import { format } from "date-fns";
+import Image from "next/image";
 
-export default function TimeLineSection() {
-  const sortedMemories: number[] = [2, 3, 3];
+export default async function TimeLineSection() {
+  const sortedMemories = await getMemories();
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
       {!sortedMemories.length ? (
@@ -43,11 +45,13 @@ export default function TimeLineSection() {
                       <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
                         {/* HTML Comment: User provided image or generic beautiful placeholder */}
                         {/* landing page romantic memory placeholder */}
-                        {/* <img 
-                            src={memory.imageUrl || "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80"} 
-                            alt={memory.title}
-                            className="w-full h-full object-cover"
-                          /> */}
+                        <Image
+                          src={memory.images[0]}
+                          alt={memory.title}
+                          className="w-full h-full object-cover"
+                          width={400}
+                          height={400}
+                        />
                         <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60" />
 
                         {/* {memory.isFavorite && (
@@ -65,15 +69,14 @@ export default function TimeLineSection() {
                   >
                     <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-widest uppercase mb-4">
                       {true
-                        ? format(new Date("2025-10-12"), "MMMM d, yyyy")
+                        ? format(new Date(memory.date), "MMMM d, yyyy")
                         : "Timeless"}
                     </div>
                     <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4 font-medium leading-tight text-balance">
-                      Test Memory
+                      {memory.title}
                     </h2>
                     <p className="text-muted-foreground leading-relaxed text-lg max-w-md text-balance font-light">
-                      This is a test memory description to verify the timeline
-                      layout and styling.
+                      {memory.story}
                     </p>
                   </div>
                 </div>

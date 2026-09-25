@@ -28,7 +28,7 @@ export default function AddMemoriesDialog() {
           Add Memory
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-background/95 backdrop-blur-xl border-white/20 shadow-2xl">
+      <DialogContent className="sm:max-w-[600px] bg-background/95 backdrop-blur-xl border-white/20 shadow-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">
             {false ? "Edit Memory" : "Add a New Memory"}
